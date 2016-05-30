@@ -58,12 +58,14 @@
             'name' => 'action'
             ]) !!}
 
+            <!--
             @if ( $PO->status != 'X' )
                 {!! Form::submit('Close',[
                 'class' => 'btn btn-info',
                 'name' => 'action'
                 ]) !!}
             @endif
+            -->
 
             @if( !empty($PO->id) )
                 {!! Form::submit('Delete',[

@@ -7,7 +7,7 @@
             <th>PO#</th>
             <th>Date</th>
             <th>Supplier</th>
-            <th class="text-center">PO Status</th>
+            <!-- <th class="text-center">PO Status</th> -->
         </tr>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
                 <td>{{ str_pad($Order->id,7,0,STR_PAD_LEFT) }}</td>
                 <td>{{ $Order->date }}</td>
                 <td>{{ $Order->supplier->supplier_name}}</td>
-                <td class="text-center">{{ $Order->po_status}}</td>
+                <!-- <td class="text-center">{{ $Order->po_status}}</td> -->
             </tr>
         @endforeach
         </tbody>
