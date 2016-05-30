@@ -46,7 +46,7 @@ class ReportsController extends Controller
         ]));
     }
 
-    public function getStockCardReport()
+    public function getStockCardReport(Request $request)
     {
 
         $from_date    = Input::get('from_date');
@@ -57,6 +57,16 @@ class ReportsController extends Controller
         if ( !empty( $from_date )
             && !empty( $to_date )
         ) {
+
+            $arr_validation  = [
+                'product_id' => 'required'
+            ];
+
+            $arr_messages = [
+                'product_id.required' => 'Please select a Product'
+            ];
+
+            $this->validate($request, $arr_validation, $arr_messages);
 
             $beg_balance = $balance = Inventory::inventoryBalance(Carbon::parse($from_date)->subDay(1),$product_id);
 
