@@ -16,7 +16,7 @@
             <tr onclick="window.location.href='{{ url("/delivery_receipts/$DeliveryReceipt->id/edit") }}'">
                 <td>{{ str_pad($DeliveryReceipt->id,7,0,STR_PAD_LEFT) }}</td>
                 <td>{{ $DeliveryReceipt->date }}</td>
-                <td>{{ isset( $DeliveryReceipt->customer->customer_name ) ? $DeliveryReceipt->customer->customer_name : '-' }}</td>
+                <td>{{ $DeliveryReceipt->customer->customer_name }}</td>
                 <td>{{ $DeliveryReceipt->salesman }}</td>
                 <td>{{ $DeliveryReceipt->remarks }}</td>
             </tr>
