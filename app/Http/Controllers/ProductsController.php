@@ -80,16 +80,16 @@ class ProductsController extends Controller
 
         $arr_validation  = [
             'product_name' => 'required',
-            'product_cost' => 'numeric'
+            'product_cost' => 'numeric',
+            'product_code' => 'required'
         ];
 
-        if ( !$request->has('id') ) {
+        /*if ( !$request->has('id') ) {
             $arr_validation['product_code'] = "required|unique:products";
         } else {
             $arr_validation['product_code'] = "required|unique:products,product_code,".$request->input('id');
-        }
-
-
+        }*/
+        
 
         $this->validate($request,$arr_validation);
 
