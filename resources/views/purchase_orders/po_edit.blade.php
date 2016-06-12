@@ -58,6 +58,24 @@
             'name' => 'action'
             ]) !!}
 
+            @if( isset($PO->id) )
+                @if ( session('url') )
+                    {!! Form::button('Back',[
+                    'class' => 'btn btn-default',
+                    'onclick' => "window.location.href='".url('po/'.$PO->id.'/edit')."'"
+                    ]) !!}
+                    {!! Form::button('Print',[
+                    'class' => 'btn btn-default',
+                    'onclick' => "printIframe('JOframe')"
+                    ]) !!}
+                @else
+                    {!! Form::submit('Print Preview',[
+                    'class' => 'btn btn-default',
+                    'name' => 'action'
+                    ]) !!}
+                @endif
+            @endif
+
             <!--
             @if ( $PO->status != 'X' )
                 {!! Form::submit('Close',[
@@ -79,8 +97,11 @@
 
     {!! Form::close() !!}
 
-
-    @if( !empty($PO->id) )
+    @if( session('url') )
+        <iframe id='JOframe' name='JOframe' frameborder='0'
+            src='{!! url(session("url")) !!}' width='100%'
+            height='500'></iframe>
+    @elseif( !empty($PO->id) )
         <div class="panel panel-default">
             <div class="panel-heading">
                 Details
@@ -179,6 +200,7 @@
             </div>
         </div>
     @endif
+
 
     <script>
 

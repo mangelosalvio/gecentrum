@@ -76,6 +76,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('po/{id}/receive','PurchaseOrderController@receivePO');
     Route::post('po/{id}/receive','PurchaseOrderController@receive');
     Route::get('po/{id}/detail/delete','PurchaseOrderController@deleteDetail');
+    Route::get('po/{id}/print','PurchaseOrderController@printTransaction');
+
 
     /**
      * Purchase Returns

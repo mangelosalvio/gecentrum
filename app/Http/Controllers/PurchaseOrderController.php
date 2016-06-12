@@ -109,7 +109,19 @@ class PurchaseOrderController extends Controller
             $PO->save();
         }
 
-        return redirect("/po/$PO->id/edit")->with(compact('status'));
+        /**
+         * For printing
+         */
+
+        $url = null;
+        if ( $request->input('action') == 'Print Preview' ) {
+            $url = 'po/'.$PO->id.'/print';
+        }
+
+        return redirect("/po/$PO->id/edit")->with(compact([
+            'status',
+            'url'
+        ]));
     }
 
     public function addProduct($id, Request $request)
@@ -155,7 +167,7 @@ class PurchaseOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         $PO = PO::whereId($id)->with('details')->first();
 
@@ -163,7 +175,9 @@ class PurchaseOrderController extends Controller
             $Detail->rr_qty = $this->receivedQty($Detail->id);
         });
 
-        return view('purchase_orders.po_edit', compact(['PO']));
+        return view('purchase_orders.po_edit', compact([
+            'PO'
+        ]));
     }
 
     public function receivePO($id)
@@ -234,5 +248,14 @@ class PurchaseOrderController extends Controller
         } else {
             return "";
         }
+    }
+
+    public function printTransaction(Request $request,$id)
+    {
+        $PO = PO::find($id);
+
+        return view('reports.po.print_po', compact([
+            'PO'
+        ]));
     }
 }

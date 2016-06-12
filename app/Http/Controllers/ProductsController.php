@@ -89,7 +89,7 @@ class ProductsController extends Controller
         } else {
             $arr_validation['product_code'] = "required|unique:products,product_code,".$request->input('id');
         }*/
-        
+
 
         $this->validate($request,$arr_validation);
 

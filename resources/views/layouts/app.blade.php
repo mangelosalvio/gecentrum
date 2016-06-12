@@ -46,6 +46,16 @@
         $.fn.datepicker.defaults.todayHighlight = true;
         $.fn.datepicker.defaults.autoclose = true;
     </script>
+
+    <script>
+        function printIframe(id) {
+            var iframe = document.frames ? document.frames[id] : document.getElementById(id);
+            var ifWin = iframe.contentWindow || iframe;
+            iframe.focus();
+            ifWin.printPage();
+            return false;
+        }
+    </script>
 </head>
 <body id="app-layout">
     @include('menu')
