@@ -20,6 +20,11 @@ class RRDetail extends Model
         'date_received'
     ];
 
+    public function PODetail()
+    {
+        return $this->belongsTo('App\PODetails','po_detail_id');
+    }
+
     public function RR()
     {
         return $this->belongsTo('App\StocksReceiving','rr_id');

@@ -97,7 +97,19 @@ class DeliveryReceiptController extends Controller
             $status = "Transaction Updated";
         }
 
-        return redirect("/delivery_receipts/$DeliveryReceipt->id/edit")->with(compact('status'));
+        /**
+         * For printing
+         */
+
+        $url = null;
+        if ( $request->input('action') == 'Print Preview' ) {
+            $url = 'delivery_receipts/'.$DeliveryReceipt->id.'/print';
+        }
+
+        return redirect("/delivery_receipts/$DeliveryReceipt->id/edit")->with(compact([
+            'status',
+            'url'
+        ]));
     }
 
     public function addProduct($id, Request $request)
@@ -148,5 +160,13 @@ class DeliveryReceiptController extends Controller
     {
         $DeliveryReceipt = DeliveryReceipt::findOrNew($id);
         return view('delivery_receipts.delivery_receipts_edit', compact(['DeliveryReceipt']));
+    }
+
+    public function printTransaction(Request $request,$id)
+    {
+        $DeliveryReceipt = DeliveryReceipt::find($id);
+        return view('reports.delivery_receipts.print_delivery_receipt', compact([
+            'DeliveryReceipt'
+        ]));
     }
 }

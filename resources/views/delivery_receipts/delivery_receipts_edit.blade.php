@@ -80,6 +80,24 @@
             'name' => 'action'
             ]) !!}
 
+            @if( isset($DeliveryReceipt->id) )
+                @if ( session('url') )
+                    {!! Form::button('Back',[
+                    'class' => 'btn btn-default',
+                    'onclick' => "window.location.href='".url('delivery_receipts/'.$DeliveryReceipt->id.'/edit')."'"
+                    ]) !!}
+                    {!! Form::button('Print',[
+                    'class' => 'btn btn-default',
+                    'onclick' => "printIframe('JOframe')"
+                    ]) !!}
+                @else
+                    {!! Form::submit('Print Preview',[
+                    'class' => 'btn btn-default',
+                    'name' => 'action'
+                    ]) !!}
+                @endif
+            @endif
+
             @if( !empty($DeliveryReceipt->id) )
                 {!! Form::submit('Delete',[
                 'class' => 'btn btn-danger',
@@ -92,8 +110,11 @@
 
     {!! Form::close() !!}
 
-
-    @if( !empty($DeliveryReceipt->id) )
+    @if( session('url') )
+        <iframe id='JOframe' name='JOframe' frameborder='0'
+                src='{!! url(session("url")) !!}' width='100%'
+                height='500'></iframe>
+    @elseif( !empty($DeliveryReceipt->id) )
         <div class="panel panel-default">
             <div class="panel-heading">
                 Details

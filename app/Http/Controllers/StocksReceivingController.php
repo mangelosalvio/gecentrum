@@ -94,7 +94,19 @@ class StocksReceivingController extends Controller
             $status = "Transaction Updated";
         }
 
-        return redirect("/rr/$StocksReceiving->id/edit")->with(compact('status'));
+        /**
+         * For printing
+         */
+
+        $url = null;
+        if ( $request->input('action') == 'Print Preview' ) {
+            $url = 'rr/'.$StocksReceiving->id.'/print';
+        }
+
+        return redirect("/rr/$StocksReceiving->id/edit")->with(compact([
+            'status',
+            'url'
+        ]));
     }
 
     public function addProduct($id, Request $request)
@@ -202,5 +214,13 @@ class StocksReceivingController extends Controller
         }
         $status = "Items Added";
         return redirect("/rr/" . $StocksReceiving->id . "/edit")->with(compact('status'));
+    }
+
+    public function printTransaction(Request $request,$id)
+    {
+        $StocksReceiving = StocksReceiving::find($id);
+        return view('reports.rr.print_rr', compact([
+            'StocksReceiving'
+        ]));
     }
 }

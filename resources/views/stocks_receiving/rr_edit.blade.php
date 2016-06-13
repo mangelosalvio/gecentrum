@@ -59,6 +59,24 @@
             'name' => 'action'
             ]) !!}
 
+            @if( isset($StocksReceiving->id) )
+                @if ( session('url') )
+                    {!! Form::button('Back',[
+                    'class' => 'btn btn-default',
+                    'onclick' => "window.location.href='".url('rr/'.$StocksReceiving->id.'/edit')."'"
+                    ]) !!}
+                    {!! Form::button('Print',[
+                    'class' => 'btn btn-default',
+                    'onclick' => "printIframe('JOframe')"
+                    ]) !!}
+                @else
+                    {!! Form::submit('Print Preview',[
+                    'class' => 'btn btn-default',
+                    'name' => 'action'
+                    ]) !!}
+                @endif
+            @endif
+
             @if( !empty($StocksReceiving->id) )
                 {!! Form::submit('Delete',[
                 'class' => 'btn btn-danger',
@@ -71,8 +89,11 @@
 
     {!! Form::close() !!}
 
-
-    @if( !empty($StocksReceiving->id) )
+    @if( session('url') )
+        <iframe id='JOframe' name='JOframe' frameborder='0'
+                src='{!! url(session("url")) !!}' width='100%'
+                height='500'></iframe>
+    @elseif( !empty($StocksReceiving->id) )
         <div class="panel panel-default">
             <div class="panel-heading">
                 Search

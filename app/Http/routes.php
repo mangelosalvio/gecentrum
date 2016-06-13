@@ -65,6 +65,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('rr/{id}','StocksReceivingController@addProduct');
     Route::get('rr/{id}/detail/delete','StocksReceivingController@deleteDetail');
+    Route::get('rr/{id}/print','StocksReceivingController@printTransaction');
 
 
     /**
@@ -112,6 +113,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('delivery_receipts','DeliveryReceiptController');
     Route::post('delivery_receipts/{id}','DeliveryReceiptController@addProduct');
     Route::get('delivery_receipts/{id}/detail/delete','DeliveryReceiptController@deleteDetail');
-
+    Route::get('delivery_receipts/{id}/print','DeliveryReceiptController@printTransaction');
 
 });
