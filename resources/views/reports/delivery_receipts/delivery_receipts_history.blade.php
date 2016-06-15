@@ -13,10 +13,10 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Stocks Arrival History
+                    Delivery Receipts History <br/>
                 </div>
                 <div class="panel-body">
-                    {!! Form::open([ 'url' => '/reports/rr-history',  'class' => 'form-horizontal', 'method' => 'GET'  ]) !!}
+                    {!! Form::open([ 'url' => '/reports/delivery-receipts-history',  'class' => 'form-horizontal', 'method' => 'GET'  ]) !!}
                     <div class="row">
                         <div class="form-group">
                             {!! Form::label('from_date', 'From Date', [
@@ -52,7 +52,6 @@
                                 {!! Form::submit('Search', [
                                     'class' => 'btn btn-primary'
                                 ]) !!}
-
                                 @if( isset($url) )
                                     {!! Form::button('Print',[
                                     'class' => 'btn btn-default',
@@ -66,9 +65,10 @@
 
                     @if( isset($url) )
                         <iframe id='JOframe' name='JOframe' frameborder='0'
-                            src='{!! $url !!}' width='100%'
-                            height='500'></iframe>
+                                src='{!! $url !!}' width='100%'
+                                height='500'></iframe>
                     @endif
+
 
 
                 </div>

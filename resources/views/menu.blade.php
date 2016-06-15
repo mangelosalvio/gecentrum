@@ -45,8 +45,8 @@
                             <li>
                                 <a href="{{ url('/po') }}">Purchase Order</a>
                                 <a href="{{ url('/rr') }}">Stock Arrival</a>
-                                <!-- <a href="{{ url('/purchase_returns') }}">Purchase Returns</a> -->
                                 <a href="{{ url('/delivery_receipts') }}">Delivery Receipts</a>
+                                <!-- <a href="{{ url('/purchase_returns') }}">Purchase Returns</a> -->
                                 <!-- <a href="#">Physical Count</a> -->
                                 <!-- <a href="{{ url('/physical_counts') }}">Physical Count</a> -->
                             </li>
@@ -60,7 +60,8 @@
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="{{ url('reports/po-history') }}">Purchase Order History</a>
-                                <a href="{{ url('reports/rr-history') }}">Stocks Receiving History</a>
+                                <a href="{{ url('reports/rr-history') }}">Stock Arrival History</a>
+                                <a href="{{ url('reports/delivery-receipts-history') }}">Delivery Receipts History</a>
                                 <!-- <a href="{{ url('reports/purchase-return-history') }}">Purchase Returns History</a>
                                 <a href="{{ url('reports/warehouse-release-history') }}">Warehouse Releasing History</a>
                                 <a href="{{ url('reports/inventory-balance-report') }}">Inventory Balance Report</a>

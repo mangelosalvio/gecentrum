@@ -63,7 +63,7 @@
                     </div>
                     {!! Form::close() !!}
 
-                    @if( $url )
+                    @if( isset($url) )
                         <iframe id='JOframe' name='JOframe' frameborder='0'
                                 src='{!! $url !!}' width='100%'
                                 height='500'></iframe>

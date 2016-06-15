@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DeliveryReceipt;
 use App\Facades\Inventory;
 use App\PO;
 use App\Products;
@@ -143,15 +144,65 @@ class ReportsController extends Controller
         if ( !empty( $from_date )
             && !empty( $to_date ) ) {
 
-            $RRs = StocksReceiving::with('products','supplier','warehouse')
-                ->orderBy('date')
-                ->get();
+            $url = url("reports/print-rr-history?from_date=$from_date&to_date=$to_date");
         }
 
         return view('reports.rr_history', compact([
             'from_date',
             'to_date',
-            'RRs'
+            'url'
+        ]));
+    }
+
+    public function getPrintRrHistory(Request $request){
+
+        $from_date = $request->input('from_date');
+        $to_date = $request->input('to_date');
+
+        $RRs = StocksReceiving::with('details')
+            ->whereBetween('date',[$from_date, $to_date])
+            ->orderBy('date')
+            ->get();
+
+        return view('reports.rr.print_rr_history', compact([
+            'RRs',
+            'from_date',
+            'to_date'
+        ]));
+    }
+
+    public function getDeliveryReceiptsHistory()
+    {
+        $from_date    = Input::get('from_date');
+        $to_date      = Input::get('to_date');
+
+
+        if ( !empty( $from_date )
+            && !empty( $to_date ) ) {
+            $url = url("reports/print-delivery-receipts-history?from_date=$from_date&to_date=$to_date");
+        }
+
+        return view('reports.delivery_receipts.delivery_receipts_history', compact([
+            'url',
+            'from_date',
+            'to_date'
+        ]));
+    }
+
+    public function getPrintDeliveryReceiptsHistory(Request $request)
+    {
+        $from_date = $request->input('from_date');
+        $to_date = $request->input('to_date');
+
+        $DRs = DeliveryReceipt::with('details','customer')
+            ->whereBetween('date',[$from_date, $to_date])
+            ->orderBy('date')
+            ->get();
+
+        return view('reports.delivery_receipts.print_delivery_receipts_history', compact([
+            'DRs',
+            'from_date',
+            'to_date'
         ]));
     }
 

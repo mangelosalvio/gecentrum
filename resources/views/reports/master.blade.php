@@ -29,9 +29,11 @@
         .table-content td, .table-content th{
             border:1px solid #000;
             padding:3px;
+            vertical-align: top;
         }
         .table-content tfoot td{
             border-top: 3px solid #000;
+            font-weight: bold;
         }
         @media print {
             body { font-size: 8px; }
