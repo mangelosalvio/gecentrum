@@ -35,7 +35,7 @@
                 <tbody>
                 @foreach($StocksReceiving->details as $Detail)
                     <tr>
-                        <td class="text-right">{{ $Detail->quantity }}</td>
+                        <td class="text-right" style="vertical-align: top;">{{ $Detail->quantity }}</td>
                         <td>
                             {{ $Detail->product->product_name }}
                             @if(count($Detail->serials))
@@ -46,7 +46,7 @@
                             </ul>
                             @endif
                         </td>
-                        <td>{{ $Detail->PODetail->PO->supplier->supplier_name }} - {{ $Detail->document_no  }}</td>
+                        <td style="vertical-align: top;">{{ $Detail->PODetail->PO->supplier->supplier_name }} - {{ $Detail->document_no  }}</td>
                     </tr>
                 @endforeach
                 </tbody>

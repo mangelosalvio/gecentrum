@@ -13,7 +13,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Purchase Order History
+                    Purchase Order History <br/>
                 </div>
                 <div class="panel-body">
                     {!! Form::open([ 'url' => '/reports/po-history',  'class' => 'form-horizontal', 'method' => 'GET'  ]) !!}
@@ -52,44 +52,23 @@
                                 {!! Form::submit('Search', [
                                     'class' => 'btn btn-primary'
                                 ]) !!}
+                                @if( isset($url) )
+                                    {!! Form::button('Print',[
+                                    'class' => 'btn btn-default',
+                                    'onclick' => "printIframe('JOframe')"
+                                    ]) !!}
+                                @endif
                             </div>
                         </div>
                     </div>
                     {!! Form::close() !!}
 
-                    @if( isset($POs) )
-                    <div class="col-sm-12">
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>PO#</th>
-                                <th>Supplier</th>
-                                <th>Product</th>
-                                <th class="text-right">Cost</th>
-                                <th class="text-right">Qty</th>
-                                <th class="text-right">Amount</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($POs as $PO)
-                                @foreach($PO->products as $Product)
-                                    <tr>
-                                        <td>{{ $PO->date }}</td>
-                                        <td>{{ str_pad($PO->id,7,0,STR_PAD_LEFT) }}</td>
-                                        <td>{{ $PO->supplier->supplier_name }}</td>
-                                        <td>{{ $Product->product_name }}</td>
-                                        <td class="text-right">{{ $Product->pivot->quantity }}</td>
-                                        <td class="text-right">{{ $Product->pivot->cost }}</td>
-                                        <td class="text-right">{{ $Product->pivot->amount }}</td>
-                                    </tr>
-                                @endforeach
-                            @endforeach
-                            </tbody>
-                        </table>
-
-                    </div>
+                    @if( $url )
+                        <iframe id='JOframe' name='JOframe' frameborder='0'
+                                src='{!! $url !!}' width='100%'
+                                height='500'></iframe>
                     @endif
+
 
 
                 </div>

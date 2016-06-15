@@ -104,18 +104,33 @@ class ReportsController extends Controller
         $from_date    = Input::get('from_date');
         $to_date      = Input::get('to_date');
 
+
         if ( !empty( $from_date )
             && !empty( $to_date ) ) {
-
-            $POs = PO::with('products','supplier')
-                ->orderBy('date')
-                ->get();
+            $url = url("reports/print-po-history?from_date=$from_date&to_date=$to_date");
         }
 
         return view('reports.po_history', compact([
+            'url',
             'from_date',
-            'to_date',
-            'POs'
+            'to_date'
+        ]));
+    }
+
+    public function getPrintPoHistory(Request $request){
+
+        $from_date = $request->input('from_date');
+        $to_date = $request->input('to_date');
+
+        $POs = PO::with('details','supplier')
+            ->whereBetween('date',[$from_date, $to_date])
+            ->orderBy('date')
+            ->get();
+
+        return view('reports.po.print_po_history', compact([
+            'POs',
+            'from_date',
+            'to_date'
         ]));
     }
 
