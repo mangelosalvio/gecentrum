@@ -115,4 +115,16 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('delivery_receipts/{id}/detail/delete','DeliveryReceiptController@deleteDetail');
     Route::get('delivery_receipts/{id}/print','DeliveryReceiptController@printTransaction');
 
+    /**
+     * Sales Returns
+     */
+
+    Route::resource('sales_returns','SalesReturnController');
+    Route::post('sales_returns/delivery_receipt','SalesReturnController@searchDeliveryReceipt');
+    Route::post('sales_returns/{id}/returnProducts','SalesReturnController@returnProducts');
+
+    Route::get('sales_returns/{id}/detail/delete','SalesReturnController@deleteDetail');
+    Route::get('sales_returns/{id}/print','SalesReturnController@printTransaction');
+
+
 });

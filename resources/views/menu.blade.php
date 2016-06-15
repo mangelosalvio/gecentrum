@@ -46,6 +46,7 @@
                                 <a href="{{ url('/po') }}">Purchase Order</a>
                                 <a href="{{ url('/rr') }}">Stock Arrival</a>
                                 <a href="{{ url('/delivery_receipts') }}">Delivery Receipts</a>
+                                <a href="{{ url('/sales_returns') }}">Sales Returns</a>
                                 <!-- <a href="{{ url('/purchase_returns') }}">Purchase Returns</a> -->
                                 <!-- <a href="#">Physical Count</a> -->
                                 <!-- <a href="{{ url('/physical_counts') }}">Physical Count</a> -->
