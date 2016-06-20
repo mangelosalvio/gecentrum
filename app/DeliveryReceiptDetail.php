@@ -24,4 +24,9 @@ class DeliveryReceiptDetail extends Model
     {
         return $this->belongsTo('App\Products');
     }
+
+    public function SalesReturnDetail()
+    {
+        return $this->hasMany('App\SalesReturnDetail');
+    }
 }

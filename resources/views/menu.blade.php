@@ -63,6 +63,7 @@
                                 <a href="{{ url('reports/po-history') }}">Purchase Order History</a>
                                 <a href="{{ url('reports/rr-history') }}">Stock Arrival History</a>
                                 <a href="{{ url('reports/delivery-receipts-history') }}">Delivery Receipts History</a>
+                                <a href="{{ url('reports/sales-returns-history') }}">Sales Returns History</a>
                                 <!-- <a href="{{ url('reports/purchase-return-history') }}">Purchase Returns History</a>
                                 <a href="{{ url('reports/warehouse-release-history') }}">Warehouse Releasing History</a>
                                 <a href="{{ url('reports/inventory-balance-report') }}">Inventory Balance Report</a>

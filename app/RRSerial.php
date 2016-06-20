@@ -14,7 +14,8 @@ class RRSerial extends Model
       'serial_no',
     ];
     protected $appends = [
-      'sales'
+      'sales',
+      'sales_return'
     ];
 
     public function detail()
@@ -31,5 +32,16 @@ class RRSerial extends Model
 
 
         return $DR;
+    }
+
+    public function getSalesReturnAttribute()
+    {
+        $serial_no = $this->attributes['serial_no'];
+        $SalesReturn = SalesReturn::whereHas('details', function($query) use ($serial_no){
+            $query->whereSerialNo($serial_no);
+        })->first();
+
+
+        return $SalesReturn;
     }
 }

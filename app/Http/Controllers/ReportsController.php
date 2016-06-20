@@ -7,6 +7,7 @@ use App\Facades\Inventory;
 use App\PO;
 use App\Products;
 use App\PurchaseReturns;
+use App\SalesReturn;
 use App\StocksReceiving;
 use App\WarehouseReleases;
 use App\Warehouses;
@@ -55,10 +56,8 @@ class ReportsController extends Controller
         $product_name = Input::get('product_name');
         $product_id   = Input::get('product_id');
 
-        if ( !empty( $from_date )
-            && !empty( $to_date )
-        ) {
 
+        if ( !empty( $from_date ) && !empty( $to_date ) ) {
             $arr_validation  = [
                 'product_id' => 'required'
             ];
@@ -68,6 +67,29 @@ class ReportsController extends Controller
             ];
 
             $this->validate($request, $arr_validation, $arr_messages);
+            $url = url("reports/print-stock-card-report?from_date=$from_date&to_date=$to_date&product_id=$product_id");
+        }
+
+        return view('reports.stock_card_report', compact([
+            'from_date',
+            'to_date',
+            'product_name',
+            'product_id',
+            'url'
+        ]));
+    }
+
+
+    public function getPrintStockCardReport(Request $request)
+    {
+        $from_date    = Input::get('from_date');
+        $to_date      = Input::get('to_date');
+        $product_name = Input::get('product_name');
+        $product_id   = Input::get('product_id');
+
+        if ( !empty( $from_date )
+            && !empty( $to_date )
+        ) {
 
             $beg_balance = $balance = Inventory::inventoryBalance(Carbon::parse($from_date)->subDay(1),$product_id);
 
@@ -88,7 +110,7 @@ class ReportsController extends Controller
             }
         }
 
-        return view('reports.stock_card_report', compact([
+        return view('reports.print_stock_card_report', compact([
             'from_date',
             'to_date',
             'product_name',
@@ -98,6 +120,9 @@ class ReportsController extends Controller
             'StockCard'
         ]));
     }
+
+
+
 
     public function getPoHistory()
     {
@@ -287,6 +312,41 @@ class ReportsController extends Controller
             'product_id',
             'RRs',
             'avg'
+        ]));
+    }
+
+    public function getSalesReturnsHistory()
+    {
+        $from_date    = Input::get('from_date');
+        $to_date      = Input::get('to_date');
+
+
+        if ( !empty( $from_date )
+            && !empty( $to_date ) ) {
+            $url = url("reports/print-sales-returns-history?from_date=$from_date&to_date=$to_date");
+        }
+
+        return view('reports.sales_returns.sales_returns_history', compact([
+            'url',
+            'from_date',
+            'to_date'
+        ]));
+    }
+
+    public function getPrintSalesReturnsHistory(Request $request)
+    {
+        $from_date = $request->input('from_date');
+        $to_date = $request->input('to_date');
+
+        $SalesReturns = SalesReturn::with('details')
+            ->whereBetween('date',[$from_date, $to_date])
+            ->orderBy('date')
+            ->get();
+
+        return view('reports.sales_returns.print_sales_returns_history', compact([
+            'SalesReturns',
+            'from_date',
+            'to_date'
         ]));
     }
 
