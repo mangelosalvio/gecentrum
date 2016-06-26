@@ -431,7 +431,8 @@ class ReportsController extends Controller
         return view('reports.sales_returns.print_sales_returns_history', compact([
             'SalesReturns',
             'from_date',
-            'to_date'
+            'to_date',
+            'arr_total'
         ]));
     }
 

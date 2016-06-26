@@ -39,8 +39,8 @@
           <file leaf-file-name="ReportsController.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportsController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.31176472" vertical-offset="7078" max-vertical-offset="7758">
-                  <caret line="419" column="55" selection-start-line="419" selection-start-column="55" selection-end-line="419" selection-end-column="55" />
+                <state vertical-scroll-proportion="0.7352941" vertical-offset="7060" max-vertical-offset="7776">
+                  <caret line="434" column="22" selection-start-line="434" selection-start-column="22" selection-end-line="434" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -145,7 +145,7 @@
           <file leaf-file-name="ReportsController.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportsController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="4522" max-vertical-offset="7758">
+                <state vertical-scroll-proportion="0.0" vertical-offset="4522" max-vertical-offset="7776">
                   <caret line="277" column="24" selection-start-line="277" selection-start-column="24" selection-end-line="277" selection-end-column="24" />
                   <folding />
                 </state>
@@ -298,8 +298,8 @@
         <option value="$PROJECT_DIR$/resources/views/reports/po/print_po_history.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/rr/print_rr_history.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/delivery_receipts/print_delivery_receipts_history.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ReportsController.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/sales_returns/print_sales_returns_history.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ReportsController.php" />
       </list>
     </option>
   </component>
@@ -728,8 +728,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/RRDetail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="166" max-vertical-offset="846">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="846">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -792,8 +792,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/reports/stock_card_report.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="2070">
-          <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="2070">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -837,18 +837,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4522" max-vertical-offset="7758">
-          <caret line="277" column="24" selection-start-line="277" selection-start-column="24" selection-end-line="277" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/reports/sales_returns/print_sales_returns_history.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17941177" vertical-offset="508" max-vertical-offset="1188">
           <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7352941" vertical-offset="7060" max-vertical-offset="7776">
+          <caret line="434" column="22" selection-start-line="434" selection-start-column="22" selection-end-line="434" selection-end-column="22" />
           <folding />
         </state>
       </provider>
