@@ -25,17 +25,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?
-                            $arr_total = array();
-                            $arr_total['amount'] = 0;
-                            $arr_total['quantity'] = 0;
-                        ?>
                         @foreach($SalesReturns as $SalesReturn)
                             @foreach($SalesReturn->details as $Detail)
-                                <?
-                                        $arr_total['amount'] += $Detail->amount;
-                                        $arr_total['quantity'] += $Detail->quantity;
-                                ?>
                                 <tr>
                                     <td>{{ $SalesReturn->date }}</td>
                                     <td>{{ str_pad($SalesReturn->id,7,0,STR_PAD_LEFT) }}</td>
