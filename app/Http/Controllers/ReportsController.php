@@ -183,7 +183,6 @@ class ReportsController extends Controller
                     }
                 }
             }
-
         }
 
         return view('reports.po.print_po_history', compact([
@@ -223,10 +222,28 @@ class ReportsController extends Controller
             ->orderBy('date')
             ->get();
 
+        $arr_total = [];
+        $arr_total['amount'] = 0;
+        $arr_total['quantity'] = 0;
+
+        if ( count( $RRs ) ) {
+            foreach ( $RRs as $RR ) {
+                if ( count( $RR->details ) ) {
+                    foreach ( $RR->details as $Detail ) {
+                        $arr_total['amount'] += $Detail->amount;
+                        $arr_total['quantity'] += $Detail->quantity;
+                    }
+                }
+            }
+
+        }
+
+
         return view('reports.rr.print_rr_history', compact([
             'RRs',
             'from_date',
-            'to_date'
+            'to_date',
+            'arr_total'
         ]));
     }
 
@@ -258,10 +275,28 @@ class ReportsController extends Controller
             ->orderBy('date')
             ->get();
 
+        $arr_total = [];
+        $arr_total['amount'] = 0;
+        $arr_total['quantity'] = 0;
+
+        if ( count( $DRs ) ) {
+            foreach ( $DRs as $DR ) {
+                if ( count( $DR->details ) ) {
+                    foreach ( $DR->details as $Detail ) {
+                        $arr_total['amount'] += $Detail->amount;
+                        $arr_total['quantity'] += $Detail->quantity;
+
+                    }
+                }
+            }
+
+        }
+
         return view('reports.delivery_receipts.print_delivery_receipts_history', compact([
             'DRs',
             'from_date',
-            'to_date'
+            'to_date',
+            'arr_total'
         ]));
     }
 
@@ -376,6 +411,22 @@ class ReportsController extends Controller
             ->whereBetween('date',[$from_date, $to_date])
             ->orderBy('date')
             ->get();
+
+        $arr_total = [];
+        $arr_total['amount'] = 0;
+        $arr_total['quantity'] = 0;
+
+        if ( count( $SalesReturns ) ) {
+            foreach ( $SalesReturns as $SalesReturn ) {
+                if ( count( $SalesReturn->details ) ) {
+                    foreach ( $SalesReturn->details as $Detail ) {
+                        $arr_total['amount'] += $Detail->amount;
+                        $arr_total['quantity'] += $Detail->quantity;
+
+                    }
+                }
+            }
+        }
 
         return view('reports.sales_returns.print_sales_returns_history', compact([
             'SalesReturns',
