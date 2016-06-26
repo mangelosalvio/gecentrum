@@ -169,10 +169,28 @@ class ReportsController extends Controller
             ->orderBy('date')
             ->get();
 
+        $arr_total = [];
+        $arr_total['amount'] = 0;
+        $arr_total['quantity'] = 0;
+
+        if ( count( $POs ) ) {
+            foreach ( $POs as $PO ) {
+                if ( count( $PO->details ) ) {
+                    foreach ( $PO->details as $Detail ) {
+                        $arr_total['amount'] += $Detail->amount;
+                        $arr_total['quantity'] += $Detail->quantity;
+
+                    }
+                }
+            }
+
+        }
+
         return view('reports.po.print_po_history', compact([
             'POs',
             'from_date',
-            'to_date'
+            'to_date',
+            'arr_total'
         ]));
     }
 
