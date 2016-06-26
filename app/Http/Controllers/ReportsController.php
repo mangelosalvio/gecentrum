@@ -33,16 +33,32 @@ class ReportsController extends Controller
 
         $date = Input::get('date');
 
-        if ( !empty($date ) && !empty( $warehouse_id ) ) {
+        if ( !empty($date ) ) {
+            $url = url("reports/print-inventory-balance-report?date=$date");
+        }
+
+        return view('reports.inventory_balance_report', compact([
+            'date',
+            'Products',
+            'url'
+        ]));
+    }
+
+    public function getPrintInventoryBalanceReport(Request $request)
+    {
+
+        $date = $request->get('date');
+
+        if ( !empty($date ) ) {
             $Products = Products::orderBy('product_name')->get();
 
-            $Products->each(function($Product) use ($date, $warehouse_id){
+            $Products->each(function($Product) use ($date){
                 $Product->balance = Inventory::inventoryBalance($date,$Product->id);
             });
 
         }
 
-        return view('reports.inventory_balance_report', compact([
+        return view('reports.print_inventory_balance_report', compact([
             'date',
             'Products'
         ]));

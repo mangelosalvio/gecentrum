@@ -33,52 +33,29 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('warehouse_id', 'Warehouse', [
-                            'class' => 'col-sm-2 control-label'
-                            ]) !!}
-                            <div class="col-sm-8">
-                                {!! Form::select('warehouse_id', $Warehouses, $warehouse_id, [
-                                'placeholder' => 'Select Warehouse',
-                                'class' => 'form-control'
-                                ]) !!}
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 {!! Form::submit('Search', [
                                     'class' => 'btn btn-primary'
                                 ]) !!}
+
+                                @if ( isset($url) )
+                                    {!! Form::button('Print',[
+                                    'class' => 'btn btn-default',
+                                    'onclick' => "printIframe('JOframe')"
+                                    ]) !!}
+                                @endif
                             </div>
                         </div>
                     </div>
                     {!! Form::close() !!}
 
-                    @if( isset($Products) )
-                    <div class="col-sm-12">
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Product Code</th>
-                                <th>Product Name</th>
-                                <th class="text-right">Balance</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($Products as $Product)
-                                <tr>
-                                    <td>{{ $Product->product_code }}</td>
-                                    <td>{{ $Product->product_name }}</td>
-                                    <td class="text-right">{{ number_format($Product->balance,2) }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-
-                    </div>
+                    @if( isset($url) )
+                        <div class="row">
+                            <iframe id='JOframe' name='JOframe' frameborder='0'
+                                    src='{!! $url !!}' width='100%'
+                                    height='500'></iframe>
+                        </div>
                     @endif
-
 
                 </div>
             </div>

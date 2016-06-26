@@ -164,10 +164,32 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <span class="glyphicon glyphicon-check" style="font-size: 40px;"></span>
+                            <span class="glyphicon glyphicon-tag" style="font-size: 40px;"></span>
                         </div>
                         <div class="col-xs-9 text-right">
                             <h4 class="text-nowrap">Delivery Receipts</h4>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-primary" onclick="window.location.href='{{ url('sales_returns') }}'">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <span class="glyphicon glyphicon-share" style="font-size: 40px;"></span>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <h4 class="text-nowrap">Sales Returns</h4>
                         </div>
                     </div>
                 </div>

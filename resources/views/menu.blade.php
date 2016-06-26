@@ -66,10 +66,10 @@
                                 <a href="{{ url('reports/sales-returns-history') }}">Sales Returns History</a>
                                 <!-- <a href="{{ url('reports/purchase-return-history') }}">Purchase Returns History</a>
                                 <a href="{{ url('reports/warehouse-release-history') }}">Warehouse Releasing History</a>
-                                <a href="{{ url('reports/inventory-balance-report') }}">Inventory Balance Report</a>
                                 <a href="{{ url('reports/product-cost-report') }}">Product Cost Report</a> -->
 
                                 <a href="{{ url('reports/stock-card-report') }}">Stock Card</a>
+                                <a href="{{ url('reports/inventory-balance-report') }}">Inventory Balance Report</a>
                             </li>
                         </ul>
                     </li>
