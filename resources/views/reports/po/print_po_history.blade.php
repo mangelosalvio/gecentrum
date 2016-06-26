@@ -25,7 +25,7 @@
                         </thead>
                         <tbody>
                         <?
-                            $arr_total = array();
+                            $arr_total = [];
                             $arr_total['amount'] = 0;
                             $arr_total['quantity'] = 0;
                         ?>
